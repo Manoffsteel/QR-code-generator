@@ -1,0 +1,115 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+body{
+  display: flex;
+  padding: 0 10px;
+  min-height: 100vh;
+  align-items: center;
+  background: #6e8ca0;
+  justify-content: center;
+}
+/* Selection Styles (highlights selected text) */
+::selection{
+  color: #fff;
+  background: #3498DB;
+}
+.wrapper{
+  height: 265px;
+  max-width: 410px;
+  background: #fff;
+  border-radius: 7px;
+  padding: 20px 25px 0;
+  /* Adds a smooth transition for height animation */
+  transition: height 0.2s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.wrapper.active{
+  /* Styles applied to the wrapper when it has the "active" class */
+  height: 530px;
+}
+header h1{
+  font-size: 26px;
+  font-weight: 600;
+  color: red;
+}
+header p{
+  margin-top: 5px;
+  font-size: 16px;
+}
+.wrapper .form{
+  margin: 20px 0 25px;
+}
+/* Targets both input and button elements within the form */
+.form :where(input, button){
+  width: 100%;
+  height: 55px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  /* Adds a smooth transition for styling changes */
+  transition: 0.1s ease;
+}
+.form input{
+  font-size: 18px;
+  padding: 0 17px;
+  border: 1px solid #999;
+}
+/* Styles applied to the input field when focused */
+.form input:focus{ 
+box-shadow: 0 3px 6px rgba(0,0,0,0.13); /* Adds a subtle shadow to the input field when focused */
+}
+.form input::placeholder{
+  color: #2a2a30;
+}
+.form button{
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 17px;
+  background: #6e8ca0;
+}
+.qr-code{
+  opacity: 0;
+  display: flex;
+  padding: 33px 0;
+  border-radius: 5px;
+  align-items: center;
+  /* Disables user interaction with the container initially */
+  pointer-events: none;
+  justify-content: center;
+  border: 1px solid #ccc;
+}
+/* Styles applied to the QR code container when the wrapper is active */
+.wrapper.active .qr-code{ 
+  opacity: 1; /* Makes the QR code container visible */
+  pointer-events: auto; /* Enables user interaction with the container */
+  transition: opacity 0.5s 0.05s ease; /* Adds a smooth transition for opacity change */
+}
+.qr-code img{
+  width: 170px;
+}
+
+/* Media Query for Smaller Screens */
+
+@media (max-width: 430px){
+  .wrapper{
+    height: 255px;
+    padding: 16px 20px;
+  }
+  .wrapper.active{
+    height: 510px;
+  }
+  header p{
+    color: #696969;
+  }
+  .form :where(input, button){
+    height: 52px;
+  }
+  .qr-code img{
+    width: 160px;
+  }  
+}
